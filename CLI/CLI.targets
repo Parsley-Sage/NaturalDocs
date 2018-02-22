@@ -71,6 +71,7 @@
 		<Target Name="CLI_AfterBuild">
 			<CallTarget Targets="Engine_AfterBuild" />
 			<CallTarget Targets="CLI_CopyTranslationResources" />
+			<CallTarget Condition="'$(OS)'=='Unix'" Targets="CLI_CopyMain" />
 		</Target>
 
 	
@@ -90,7 +91,19 @@
 		<Target Name="CLI_CopyTranslationResources">
 
 			<MakeDir Directories="$(TargetDir)Translations" />
-			<Exec Command='xcopy "$(NaturalDocsSourceDir)CLI\Resources\Translations" "$(TargetDir)Translations" /Y' />
+			<Exec Condition="'$(OS)'=='Windows_NT'" Command='xcopy "$(NaturalDocsSourceDir)CLI\Resources\Translations" "$(TargetDir)Translations" /Y' />
+			<Exec Condition="'$(OS)'=='Unix'"       Command='cp -Ru "$(NaturalDocsSourceDir)CLI\Resources\Translations" "$(TargetDir)."' />
+
+    </Target>
+
+		<Target Name="CLI_CopyMain">
+
+			<Exec Command='cp -f "$(NaturalDocsSourceDir)CLI\bin\$(Configuration)\NaturalDocs.Engine.Regex.dll" "$(TargetDir)."' />
+			<Exec Command='cp -f "$(NaturalDocsSourceDir)CLI\bin\$(Configuration)\NaturalDocs.Engine.dll" "$(TargetDir)."' />
+			<Exec Command='cp -f "$(NaturalDocsSourceDir)CLI\bin\$(Configuration)\NaturalDocs.Engine.pdb" "$(TargetDir)."' />
+			<Exec Command='cp -f "$(NaturalDocsSourceDir)CLI\bin\$(Configuration)\NaturalDocs.exe" "$(TargetDir)."' />
+			<Exec Command='cp -f "$(NaturalDocsSourceDir)CLI\bin\$(Configuration)\NaturalDocs.exe.config" "$(TargetDir)."' />
+			<Exec Command='cp -f "$(NaturalDocsSourceDir)CLI\bin\$(Configuration)\NaturalDocs.pdb" "$(TargetDir)."' />
 
 		</Target>
 	

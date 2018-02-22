@@ -250,7 +250,8 @@
 		<Target Name="Engine_CopyConfigResources">
 
 			<MakeDir Directories="$(TargetDir)Config" />
-			<Exec Command='xcopy "$(NaturalDocsSourceDir)Engine\Resources\Config" "$(TargetDir)Config" /Y' />
+			<Exec Condition="'$(OS)'=='Windows_NT'" Command='xcopy "$(NaturalDocsSourceDir)Engine\Resources\Config" "$(TargetDir)Config" /Y' />
+			<Exec Condition="'$(OS)'=='Unix'"       Command='cp -Ru "$(NaturalDocsSourceDir)Engine\Resources\Config" "$(TargetDir)"' />
 
 		</Target>
 	
@@ -271,7 +272,8 @@
 		<Target Name="Engine_CopyStyleResources">
 
 			<MakeDir Directories="$(TargetDir)Styles" />
-			<Exec Command='xcopy "$(NaturalDocsSourceDir)Engine\Resources\Styles" "$(TargetDir)Styles" /S /Y' />
+			<Exec Condition="'$(OS)'=='Windows_NT'" Command='xcopy "$(NaturalDocsSourceDir)Engine\Resources\Styles" "$(TargetDir)Styles" /S /Y' />
+			<Exec Condition="'$(OS)'=='Unix'"       Command='cp -Ru "$(NaturalDocsSourceDir)Engine\Resources\Styles" "$(TargetDir)"' />
 
 		</Target>
 	
@@ -292,7 +294,8 @@
 		<Target Name="Engine_CopyTranslationResources">
 
 			<MakeDir Directories="$(TargetDir)Translations" />
-			<Exec Command='xcopy "$(NaturalDocsSourceDir)Engine\Resources\Translations" "$(TargetDir)Translations" /Y' />
+			<Exec Condition="'$(OS)'=='Windows_NT'" Command='xcopy "$(NaturalDocsSourceDir)Engine\Resources\Translations" "$(TargetDir)Translations" /Y' />
+			<Exec Condition="'$(OS)'=='Unix'"       Command='cp -Ru "$(NaturalDocsSourceDir)Engine\Resources\Translations" "$(TargetDir)"' />
 
 		</Target>
 	
