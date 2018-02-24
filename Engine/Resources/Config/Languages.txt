@@ -280,6 +280,11 @@ Language: Fortran
    Function Prototype Ender: \n
    Variable Prototype Enders: \n = =>
 
+Language: SystemVerilog
+
+   Extension: sv svh
+
+   Simple Identifier: SystemVerilog
 
 # These settings define the languages Natural Docs knows how to parse.  Note
 # that all lists are space separated so that commas can be used as values.

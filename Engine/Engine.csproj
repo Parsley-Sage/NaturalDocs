@@ -1,10 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{F7569B05-FFFD-4084-8F33-760F3E1916CD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -38,9 +36,6 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
   </PropertyGroup>
   <PropertyGroup>
     <RunPostBuildEvent>Always</RunPostBuildEvent>
@@ -252,27 +247,21 @@
     <Compile Include="Source\CommentTypes\CommentType.cs" />
     <Compile Include="Source\UTF8Marshaller.cs" />
     <Compile Include="Source\Version.cs" />
+    <Compile Include="Source\Languages\Parsers\SystemVerilog.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Architecture\Code Conventions.txt" />
     <Content Include="Architecture\Compilation Symbols.txt" />
     <Content Include="Architecture\Database Layout\Contexts.txt" />
     <Content Include="Architecture\Database Layout\Classes.txt" />
-    <Content Include="Architecture\JavaScript and Styles\JavaScript Search Data.txt" />
-    <Content Include="Architecture\JavaScript and Styles\JavaScript SummaryData.txt" />
-    <Content Include="Architecture\JavaScript and Styles\JavaScript ToolTip Data.txt" />
-    <Content Include="Architecture\JavaScript and Styles\JavaScript Menu Data.txt" />
     <Content Include="Architecture\Linking.txt" />
-    <Content Include="Architecture\JavaScript and Styles\CSS Structure.txt" />
     <Content Include="Architecture\Database Layout\AlternateLinkEndingSymbols.txt" />
     <Content Include="Architecture\Database Layout\Links.txt" />
     <Content Include="Architecture\Database Layout\System.txt" />
     <Content Include="Architecture\Database Layout\Topics.txt" />
     <Content Include="Architecture\File Processing.txt" />
     <Content Include="Architecture\ID Deletions.txt" />
-    <Content Include="Architecture\JavaScript and Styles\File Shrinking.txt" />
     <Content Include="Architecture\NDMarkup.txt" />
-    <Content Include="Architecture\JavaScript and Styles\Substitutions.txt" />
     <Content Include="Resources\Config\Languages.txt" />
     <Content Include="Resources\Config\Parser.txt" />
     <Content Include="Resources\Config\Comments.txt" />
@@ -280,6 +269,13 @@
     <Content Include="Resources\Translations\NaturalDocs.Engine.default.txt" />
     <Content Include="Source\Languages\Parsers\Perl Notes.txt" />
     <Content Include="Source\Languages\Parsers\CSharp Notes.txt" />
+    <Content Include="Architecture\Javascript and Styles\JavaScript Search Data.txt" />
+    <Content Include="Architecture\Javascript and Styles\JavaScript SummaryData.txt" />
+    <Content Include="Architecture\Javascript and Styles\JavaScript ToolTip Data.txt" />
+    <Content Include="Architecture\Javascript and Styles\JavaScript Menu Data.txt" />
+    <Content Include="Architecture\Javascript and Styles\CSS Structure.txt" />
+    <Content Include="Architecture\Javascript and Styles\File Shrinking.txt" />
+    <Content Include="Architecture\Javascript and Styles\Substitutions.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -288,11 +284,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Reference Include="NaturalDocs.Engine.Regex, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="System" />
+    <Reference Include="NaturalDocs.Engine.Regex">
       <HintPath>Resources\Regex\Release\NaturalDocs.Engine.Regex.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -100,10 +100,8 @@
 
 			<Exec Command='cp -f "$(NaturalDocsSourceDir)CLI\bin\$(Configuration)\NaturalDocs.Engine.Regex.dll" "$(TargetDir)."' />
 			<Exec Command='cp -f "$(NaturalDocsSourceDir)CLI\bin\$(Configuration)\NaturalDocs.Engine.dll" "$(TargetDir)."' />
-			<Exec Command='cp -f "$(NaturalDocsSourceDir)CLI\bin\$(Configuration)\NaturalDocs.Engine.pdb" "$(TargetDir)."' />
 			<Exec Command='cp -f "$(NaturalDocsSourceDir)CLI\bin\$(Configuration)\NaturalDocs.exe" "$(TargetDir)."' />
 			<Exec Command='cp -f "$(NaturalDocsSourceDir)CLI\bin\$(Configuration)\NaturalDocs.exe.config" "$(TargetDir)."' />
-			<Exec Command='cp -f "$(NaturalDocsSourceDir)CLI\bin\$(Configuration)\NaturalDocs.pdb" "$(TargetDir)."' />
 
 		</Target>
 	
