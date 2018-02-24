@@ -268,7 +268,7 @@ namespace CodeClear.NaturalDocs.Engine.Languages.Parsers
 
 			// Attributes
 
-			if (TryToSkipAttributes(ref lookahead, AttributeTarget.LocalOnly, mode))
+			if (lookahead.MatchesToken("virtual"))
 			{  TryToSkipWhitespace(ref lookahead);  }
 
 
@@ -448,6 +448,7 @@ namespace CodeClear.NaturalDocs.Engine.Languages.Parsers
 				return true;
 			}
 		}
+
 		protected bool TryToSkipSliceDescription (ref TokenIterator iterator, ParseMode mode = ParseMode.IterateOnly, List<Element> elements = null, 
 			SymbolString scope = default(SymbolString))
 		{
@@ -460,6 +461,66 @@ namespace CodeClear.NaturalDocs.Engine.Languages.Parsers
 			{
 				return false;
 			}
+			TryToSkipWhitespace(lookahead);
+			if(!base.TryToSkipNumber(lookahead, mode))
+			{
+				return false;
+			}
+			TryToSkipWhitespace(lookahead);
+			if(lookahead.Character == '+' || lookahead.Character == '-')
+			{
+				lookahead.Next();
+			}
+			if(lookahead.Character == ':')
+			{
+				lookahead.Next();
+			}
+			else
+			{
+				return false;
+			}
+			TryToSkipWhitespace(lookahead);
+			if(!base.TryToSkipNumber(lookahead, mode))
+			{
+				return false;
+			}
+			if(lookahead.Character == ']')
+			{
+				lookahead.Next();
+			}
+			else
+			{
+				return false;
+			}
+			TryToSkipWhitespace(lookahead);
+			iterator = lookahead;
+			return true;
+		}
+
+		protected bool TryToSkipDefineInst (ref TokenIterator iterator, ParseMode mode = ParseMode.IterateOnly, List<Element> elements = null, 
+			SymbolString scope = default(SymbolString))
+		{
+			// TODO: Define instantiations with parameters are not supported.
+			TokenIterator lookahead = iterator;
+			if(lookahead.Character == '`')
+			{
+				lookahead.Next();
+			}
+			else
+			{
+				return false;
+			}
+			if(TryToSkipWhitespace(lookahead))
+			{
+				return false;
+			}
+			if(!TryToSkipString(lookahead, mode))
+			{
+				return false;
+			}
+			TryToSkipWhitespace(lookahead);
+			iterator = lookahead;
+			return true;
 		}
 	}
 
